@@ -1,4 +1,20 @@
+<?php
+//pagination newest.
+$messages = array_reverse(file('messages.txt', FILE_IGNORE_NEW_LINES)); //latest first
+$mppage = 10;
+$total_m = count($messages);
+$total_p = ceil($total_m / $mppage);
 
+$page isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$page = max(1, min($total_p, $page)); // stays for 10
+
+$start = ($page - 1) * $mppage;
+$msgshow = array_slice($messages, $start, $mppage);
+foreach ($msgshow as $msg) {
+    echo "<p>$msg</p>
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,8 +36,6 @@
 <body>
     <div class="content">
         <center>
-            <img class="pfp" src="https://files.catbox.moe/z4qhrw.png">
-            <br />
             <div class="container">
                 <?php
                 // guestbook!
@@ -96,6 +110,9 @@
                 echo"<h3>GuestBook Messages</h3>";
                 displayMessages();
                 echo "<br />";
+                for ($i = 1; $i <= $total_p; $i++) {
+                    echo ($i === $page) ? "<strong>$i</strong" : <a href='?page=$i'>$i</a>";
+                }
                 ?>
             </div>
         </center>
