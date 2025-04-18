@@ -23,7 +23,6 @@
             <img class="pfp" src="https://files.catbox.moe/z4qhrw.png">
             <br />
             <div class="container">
-            <h2>verbrechen</h2><br />
                 <?php
                 // guestbook!
                 ini_set('display_errors', '1');
