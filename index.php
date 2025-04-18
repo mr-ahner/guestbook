@@ -5,15 +5,11 @@ $mppage = 10;
 $total_m = count($messages);
 $total_p = ceil($total_m / $mppage);
 
-$page isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$page =  isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $page = max(1, min($total_p, $page)); // stays for 10
 
 $start = ($page - 1) * $mppage;
 $msgshow = array_slice($messages, $start, $mppage);
-foreach ($msgshow as $msg) {
-    echo "<p>$msg</p>
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,17 +54,16 @@ foreach ($msgshow as $msg) {
                     }
                 }
                 sendMessage();
-                //function displayMessages does as it says 
-                // if it's empty, say it is, if not  display messages.
-                function displayMessages() {
+                // func displayMessages is currently commeted out, due to pagination. Just keeping this here for my mental sake.
+                //function displayMessages() {
                     
-                    $messages = file_get_contents("messages.txt");
+                   // $messages = file_get_contents("messages.txt");
                     
-                    if (empty(trim($messages))) {
-                        echo "No Guestbook Messages";
-                    } else {
-                        echo "" . nl2br($messages) . "</div>";
-                    }
+                   // if (empty(trim($messages))) {
+                     //   echo "No Guestbook Messages";
+                 //   } else {
+                     //   echo "" . nl2br($messages) . "</div>";
+               //     }
                 }
                 ?>
                 <style>
@@ -108,11 +103,23 @@ foreach ($msgshow as $msg) {
                 
                 <?php
                 echo"<h3>GuestBook Messages</h3>";
-                displayMessages();
-                echo "<br />";
-                for ($i = 1; $i <= $total_p; $i++) {
-                    echo ($i === $page) ? "<strong>$i</strong" : <a href='?page=$i'>$i</a>";
+                if (empty($msgshow)) {
+                    echo "no gb messages";
+                } else {
+                    foreach ($msgshow as $msg) {
+                        echo "<p>$msg</p>";
+                    }
                 }
+                echo "<br />";
+             echo "<div class='pagination'>";
+                for ($i = 1; $i <= $total_p; $i++) {
+                    if ($i === $page) {
+                        echo "<strong>$i</strong>";
+                    } else {
+                        echo "<a href='?page=$i'>$i</a>";
+                    }
+                }
+                echo "</div>";
                 ?>
             </div>
         </center>
