@@ -1,2 +1,4 @@
 # guestbook
-Code for guestbook used on personal website. Now I am open sourcing it, hoping other people would use it.
+How to use:
+#1 
+Firstly, copy and paste index.php to your site, then create a .txt file called messages. That's it.
