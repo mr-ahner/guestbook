@@ -1,5 +1,26 @@
 <?php
-
+$bannedip = $_SERVER['REMOTE_ADDR'];
+$banned = file(__DIR__  . '/rt/bannedusers.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+if (in_array($bannedip, $banned)) {
+    die('
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Banned</title>
+        <style>
+            body { background: black; color: red; font-size: 30px;}
+        </style>
+    </head>
+    <body>
+        <center>
+        your banned retard
+        <br>
+        <img src="https://files.catbox.moe/dmj4wp.gif">
+        </center>
+    </body>
+</html>');
+    
+}
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
