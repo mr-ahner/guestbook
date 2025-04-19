@@ -1,4 +1,5 @@
 <?php
+// for banned users, add ip it /rt/bannedusers.txt
 $bannedip = $_SERVER['REMOTE_ADDR'];
 $banned = file(__DIR__  . '/rt/bannedusers.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 if (in_array($bannedip, $banned)) {
@@ -21,6 +22,16 @@ if (in_array($bannedip, $banned)) {
 </html>');
     
 }
+
+
+// to stop bots don't mind the referer I am working on that.
+$useragent = $_SERVER['HTTP_USER_AGENT'];
+//$referer =$_SERVER['HTTP_REFERER'];
+if(empty($useragent) || strpos($useragent, 'curl') !== false || strpos($useragent, 'bot') !== false) {
+    die ("no bots allowed");
+}
+
+
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
@@ -47,7 +58,7 @@ $msgshow = array_slice($messages, $start, $mppage);
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
-
+    <title>tim ahner's guestbook</title>
     <meta name="robots" content="index, follow">
 
     <link rel="canonical" href="">
@@ -73,7 +84,6 @@ $msgshow = array_slice($messages, $start, $mppage);
                         $rl = 60; // rate limiting
                         $ip = preg_replace('/[^0-9a-fA-F.:]/', '_', $_SERVER['REMOTE_ADDR']);
                         $rf = __DIR__ . "/rt/limit_$ip.txt";
-                        
                         if (file_exists($rf)) {
                             $lps = (int)file_get_contents($rf);
                             $ct = time();
