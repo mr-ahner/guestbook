@@ -48,16 +48,42 @@ $msgshow = array_slice($messages, $start, $mppage);
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $username = ($_POST['username']);
                         $message = ($_POST['message']);
+                        $ip = $_SERVER['REMOTE_ADDR']; //mainly for the bots, and for future ip-banning, but you can get rid of this, just // it out.
+                        $rl = 60; // rate limiting
+                        $ip = preg_replace('/[^0-9a-fA-F.:]/', '_', $_SERVER['REMOTE_ADDR']);
+                        $rf = __DIR__ . "/rt/limit_$ip.txt";
+                        
+                        if (file_exists($rf)) {
+                            $lps = (int)file_get_contents($rf);
+                            $ct = time();
+                            if ($ct - $lps < $rl) {
+                                die("stop fucking spamming");
+                            }
+                        }
+                        file_put_contents($rf, time());
+                        $humantest = $_POST['skibidi']; //if a bot fills out a form, they will fill out everything, the user will not, becuase this is hidden, allowing me to see what is a bot and what is not. 
                         $date = date('Y-m-d');  
+                        if ($humantest !== "") {
+                           $username = "BOT (GET OFF MY SITE)";
+                        } else {
+                            $username = htmlspecialchars($username);
+                            $message = htmlspecialchars($message);
+                        }
+                        $ipfile = fopen("ips.txt", "a") or die("Unable to open file!");
+                        $ips = $username . ":" . $ip . "\n";
+                        fwrite($ipfile, $ips);
+                        fclose($ipfile);
                         $messagesFile = fopen("messages.txt", "a") or die("Unable to open file!");
                         $txt = $username . ": " . $message . " at: " . $date . "\n";
                         fwrite($messagesFile, $txt);
+                        file_put_contents($rf, time());
                         fclose($messagesFile);
                             header("Location: guestbook.php");
                 
                     }
                 }
                 sendMessage();
+                
                 // func displayMessages is currently commeted out, due to pagination. Just keeping this here for my mental sake.
                 //function displayMessages() {
                     
@@ -97,6 +123,7 @@ $msgshow = array_slice($messages, $start, $mppage);
                     <br />
                     <input type="hidden" name="date">
                     <br />
+                    <input type="text" name="skibidi" style="display:none" autocomplete="off">
                     <input type="submit" value="Send Message!">
                 </form>
                 
