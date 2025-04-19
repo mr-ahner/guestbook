@@ -7,5 +7,7 @@ a message that says "your banned ret*rd" with a anime picture laughting at them.
 # Users
 If you happen to use nazbook, please email me your website and I shall link it in the Live example section. email me at "tim@tim-ahner.com" timattim-ahnerdotcom.
 
+# People
+It's mainly me, Tim, and my friend.
 # Live example
 https://tim-ahner.com/guestbook.php
