@@ -5,4 +5,4 @@ before the sixty seconds is up, it will just display on screen, "stop fucking sp
 a message that says "your banned ret*rd" with a anime picture laughting at them.
 
 # Live example
-[link]https://tim-ahner.com/guestbook.php[/link]
+https://tim-ahner.com/guestbook.php
