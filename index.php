@@ -1,6 +1,10 @@
 <?php
+
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 //pagination newest.
-$messages = array_reverse(file('messages.txt', FILE_IGNORE_NEW_LINES)); //latest first
+$messages = array_reverse(file('messages.txt')); //latest first
 $mppage = 10;
 $total_m = count($messages);
 $total_p = ceil($total_m / $mppage);
@@ -46,10 +50,10 @@ $msgshow = array_slice($messages, $start, $mppage);
                         $message = ($_POST['message']);
                         $date = date('Y-m-d');  
                         $messagesFile = fopen("messages.txt", "a") or die("Unable to open file!");
-                        $txt = "<div class='message'>" . $username . ": " . $message . "\n at: " . $date . "\n </div>";
+                        $txt = $username . ": " . $message . " at: " . $date . "\n";
                         fwrite($messagesFile, $txt);
                         fclose($messagesFile);
-                            header("Location: index.php");
+                            header("Location: guestbook.php");
                 
                     }
                 }
@@ -64,11 +68,11 @@ $msgshow = array_slice($messages, $start, $mppage);
                  //   } else {
                      //   echo "" . nl2br($messages) . "</div>";
                //     }
-                }
+                //}
                 ?>
                 <style>
-                body {cursor: -webkit-default cursor: default;}
-
+                body {cursor: -webkit-default cursor: default; background-color:BLACK; color: red;}
+        
                     input {
                         border-radius: 10px;
                         color: red;
@@ -76,19 +80,14 @@ $msgshow = array_slice($messages, $start, $mppage);
                         background-color: black;
                         cursor: -webkit-default cursor: default;
                     }
-                    .message {
-                         border: 1px dotted red;
+                    .messages {
+                        border: 1px dotted red;
                         width: fit-content;
-                            color: red;
-                            transition: all 0.3s ease;
-                            cursor: -webkit-default cursor: default;
+                        color: red;
+                        cursor: -webkit-default cursor: default;
                         }
                         
-                    .message:hover {
-                            transform: scale(1.5); 
-                            cursor: -webkit-default cursor: default;
-                            background-color:black;
-                    }
+                    
                 </style>
                 <h2>&#x1F449;&#x1F448;</h2>
                 <form method="POST" action="">    
@@ -102,6 +101,7 @@ $msgshow = array_slice($messages, $start, $mppage);
                 </form>
                 
                 <?php
+                echo "<div class='messages'>";
                 echo"<h3>GuestBook Messages</h3>";
                 if (empty($msgshow)) {
                     echo "no gb messages";
@@ -111,7 +111,7 @@ $msgshow = array_slice($messages, $start, $mppage);
                     }
                 }
                 echo "<br />";
-             echo "<div class='pagination'>";
+                echo "<br>";
                 for ($i = 1; $i <= $total_p; $i++) {
                     if ($i === $page) {
                         echo "<strong>$i</strong>";
