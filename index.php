@@ -1,5 +1,5 @@
 <?php
-// for banned users, add ip it /rt/bannedusers.txt
+// for banned users, add ip it /rt/bannedusers.txt.
 $bannedip = $_SERVER['REMOTE_ADDR'];
 $banned = file(__DIR__  . '/rt/bannedusers.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 if (in_array($bannedip, $banned)) {
