@@ -4,5 +4,8 @@ helps with rate limiting, and saves each and every users ip as a .txt file calle
 before the sixty seconds is up, it will just display on screen, "stop fucking spamming", and will till the sixty seconds are up. To ip-ban someone, create a file called bannedusers.txt in your rt directory, and put the users IP in it, it will display
 a message that says "your banned ret*rd" with a anime picture laughting at them.
 
+# Users
+If you happen to use nazbook, please email me your website and I shall link it in the Live example section. email me at "tim@tim-ahner.com" timattim-ahnerdotcom.
+
 # Live example
 https://tim-ahner.com/guestbook.php
