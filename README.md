@@ -1,8 +1,11 @@
 # GuestBook
-Welcome to the GuestBook software. To run on your website, put guestbook.php on your server, plus two txt files, ips.txt, and messages.txt. And one folder /rt/. The folder
-helps with rate limiting, and saves each and every users ip as a .txt file called "limit_$ip.txt", this saves the last time stamp of the poster, and sixty seconds later, it will allow them to post. If they try to post 
-before the sixty seconds is up, it will just display on screen, "stop fucking spamming", and will till the sixty seconds are up. To ip-ban someone, create a file called bannedusers.txt in your rt directory, and put the users IP in it, it will display
-a message that says "your banned ret*rd" with a anime picture laughting at them.
+Welcome to nazbook. Nazbook is a guestbook software built in PHP written by me. There is a mod panel that lets you ban users, there is ip logging, and the basic guestbook functions. 
+If I were you, I'd read the entire codebase, then you'd understand. You can also check the live example on my website. In the mod panel, the password is set as "123" YOU NEED TO CHANGE THIS. Also, remeber this password
+is HARD-CODED, and is NOT secure. The mod panel only allows you to put a ip in, and that puts the ip in the banned user list, so for any user to guess your password or find it, they, to ban any user, would still need to know
+their ip, which is unlikly. On the live example the password is still "123", so you can test it out with your own ip, just so you can test it. If I ever need to ban people, I guess I might change it.
+
+# Help
+If you want to help contribute to nazbook, please do so! I'd really enjoy having people helping. If you need to email me about anything, email me down below. It'd be great if you could commit.
 
 # Users
 If you happen to use nazbook, please email me your website and I shall link it in the Live example section. email me at "tim@tim-ahner.com" timattim-ahnerdotcom.
