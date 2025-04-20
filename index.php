@@ -22,8 +22,20 @@ if (in_array($bannedip, $banned)) {
 </html>');
     
 }
-
-
+// function opsec is for something else, but I'm putting this in here for future me. 
+function opsec() {
+    $opsecip = $_SERVER['SERVER_ADDR'];
+    echo "$opsecip";
+}
+// store user agent, not actually using this function right now, but might later? we'll see
+function storeuseragent() {
+        $useragent = $_SERVER['HTTP_USER_AGENT'];
+        $content = $useragent;
+        $uafile = "/rt/useragents.txt";
+        $openfile = fopen("$uafile", "a");
+        fwrite($uafile, $content);
+        fclose;
+}
 // to stop bots don't mind the referer I am working on that.
 $useragent = $_SERVER['HTTP_USER_AGENT'];
 //$referer =$_SERVER['HTTP_REFERER'];
@@ -58,9 +70,29 @@ $msgshow = array_slice($messages, $start, $mppage);
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
-    <title>tim ahner's guestbook</title>
+    <title></title>
     <meta name="robots" content="index, follow">
-
+          <style>
+            body {
+            cursor: -webkit-default
+            cursor: default; 
+            background-color:BLACK; 
+            color: red;
+            }
+            input {
+            border-radius: 10px;
+            color: red;
+            border: 1px dotted red;
+            background-color: black;
+            cursor: -webkit-default cursor: default;
+            }
+            .messages {
+            border: 1px dotted red;
+            width: fit-content;
+            color: red;
+            cursor: -webkit-default cursor: default;
+            }
+    </style>
     <link rel="canonical" href="">
 
     <link rel="icon" href="" type="image/x-icon">
@@ -82,9 +114,9 @@ $msgshow = array_slice($messages, $start, $mppage);
                         $message = ($_POST['message']);
                         $ip = $_SERVER['REMOTE_ADDR']; //mainly for the bots, and for future ip-banning, but you can get rid of this, just // it out.
                         $rl = 60; // rate limiting
-                        $ip = preg_replace('/[^0-9a-fA-F.:]/', '_', $_SERVER['REMOTE_ADDR']);
-                        $rf = __DIR__ . "/rt/limit_$ip.txt";
-                        if (file_exists($rf)) {
+                        $ip = preg_replace('/[^0-9a-fA-F.:]/', '_', $_SERVER['REMOTE_ADDR']); // gets ip
+                        $rf = __DIR__ . "/rt/limit_$ip.txt"; // gets rt dir
+                        if (file_exists($rf)) { // checking if it exists
                             $lps = (int)file_get_contents($rf);
                             $ct = time();
                             if ($ct - $lps < $rl) {
@@ -109,43 +141,12 @@ $msgshow = array_slice($messages, $start, $mppage);
                         fwrite($messagesFile, $txt);
                         file_put_contents($rf, time());
                         fclose($messagesFile);
-                            header("Location: guestbook.php");
+                        header("Location: guestbook.php");
                 
                     }
                 }
                 sendMessage();
-                
-                // func displayMessages is currently commeted out, due to pagination. Just keeping this here for my mental sake.
-                //function displayMessages() {
-                    
-                   // $messages = file_get_contents("messages.txt");
-                    
-                   // if (empty(trim($messages))) {
-                     //   echo "No Guestbook Messages";
-                 //   } else {
-                     //   echo "" . nl2br($messages) . "</div>";
-               //     }
-                //}
                 ?>
-                <style>
-                body {cursor: -webkit-default cursor: default; background-color:BLACK; color: red;}
-        
-                    input {
-                        border-radius: 10px;
-                        color: red;
-                        border: 1px dotted red;
-                        background-color: black;
-                        cursor: -webkit-default cursor: default;
-                    }
-                    .messages {
-                        border: 1px dotted red;
-                        width: fit-content;
-                        color: red;
-                        cursor: -webkit-default cursor: default;
-                        }
-                        
-                    
-                </style>
                 <h2>&#x1F449;&#x1F448;</h2>
                 <form method="POST" action="">    
                     <input type="text" name="username" placeholder="Username">
