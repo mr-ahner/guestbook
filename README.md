@@ -1,3 +1,4 @@
+![Favicllon](https://github.com/user-attachments/assets/ca45b0ac-2f88-421f-9f9a-75cce0bae18f)
 # GuestBook
 Welcome to nazbook. Nazbook is a guestbook software built in PHP written by me. There is a mod panel that lets you ban users, there is ip logging, and the basic guestbook functions. 
 If I were you, I'd read the entire codebase, then you'd understand. You can also check the live example on my website. In the mod panel, the password is set as "123" YOU NEED TO CHANGE THIS. Also, remeber this password
