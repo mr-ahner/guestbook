@@ -1,8 +1,8 @@
 <?php
 session_start();
-
+require ("helpme.php");
 function setMod($pass) {
-  $cpassword = "123"; // put your password here, this IS NOT SECURE. DO NOT PUT A PASSWORD YOU USE HERE. For now I'll, mr-ahner, shall put 123 lulz
+  $cpassword = $fuckyou; // in helpme.php define this variable for password 
   if ($pass === $cpassword) {
     $_SESSION['mod'] = true;
     return "mod is in session";
