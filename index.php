@@ -79,7 +79,7 @@ $msgshow = array_slice($messages, $start, $mppage);
             background-color:BLACK; 
             color: red;
             }
-            input {
+            input, textarea {
             border-radius: 10px;
             color: red;
             border: 1px dotted red;
@@ -151,10 +151,9 @@ $msgshow = array_slice($messages, $start, $mppage);
                 <form method="POST" action="">    
                     <input type="text" name="username" placeholder="Username">
                     <br />
-                    <input type="text" name="message" placeholder="Message">
+                    <textarea type="text" name="message" placeholder="Message"></textarea>
                     <br />
                     <input type="hidden" name="date">
-                    <br />
                     <input type="text" name="skibidi" style="display:none" autocomplete="off">
                     <input type="submit" value="Send Message!">
                 </form>
