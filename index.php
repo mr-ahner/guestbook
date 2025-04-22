@@ -126,7 +126,7 @@ $msgshow = array_slice($messages, $start, $mppage);
                         if(file_exists($file)) {
                           $contents = file_get_contents($file);
                           foreach($words as $word) {
-                          $content = preg_replace('/\b' . preg_quote($word, '/') . . '\b/i', $replacement, $contents);
+                          $content = preg_replace('/\b' . preg_quote($word, '/') . '\b/i', $replacement, $contents);
                           }
                           file_put_contents($file, $contents);
                         } else {
@@ -201,9 +201,9 @@ $msgshow = array_slice($messages, $start, $mppage);
                 }
                 echo "</div>";
                 $htter = "hits.txt";
-                $hots = file_exists($htter) ? (int)file_get_contents($httr) : 0;
+                $hots = file_exists($htter) ? (int)file_get_contents($htter) : 0;
                 $hots++;
-                file_put_content($httr, $hots);
+                file_put_contents($htter, $hots);
                 echo "guestbook has been viewed $hots times.";
                 ?>
             </div>
