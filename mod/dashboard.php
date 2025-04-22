@@ -8,4 +8,8 @@ $iusersfile = fopen("../ips.txt", "r") or die("unable to list ips");
 echo fread($iusersfile,filesize("../ips.txt"));
 fclose($iusersfile);
 echo "<hr>";
+
+$mod = "['yourname']"; //tim - you can chan ge this, just to your name         
+
+echo "welcome $mod!";
 ?>
