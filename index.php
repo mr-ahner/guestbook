@@ -36,20 +36,22 @@ function opsec() {
     $opsecip = $_SERVER['SERVER_ADDR'];
     echo "$opsecip";
 }
-// store user agent, not actually using this function right now, but might later? we'll see
-function storeuseragent() {
-        $useragent = $_SERVER['HTTP_USER_AGENT'];
-        $content = $useragent;
-        $uafile = "/rt/useragents.txt";
-        $openfile = fopen("$uafile", "a");
-        fwrite($uafile, $content);
-        fclose;
-}
 // to stop bots don't mind the referer I am working on that.
 $useragent = $_SERVER['HTTP_USER_AGENT'];
 //$referer =$_SERVER['HTTP_REFERER'];
 if(empty($useragent) || strpos($useragent, 'curl') !== false || strpos($useragent, 'bot') !== false) {
     die ("no bots allowed");
+}
+function storeuseragent() {
+    $useragent = $_SERVER['HTTP_USER_AGENT'];
+    $uafile = "./rt/useragents.txt";
+    $openfile = fopen($uafile, "a");
+    if ($openfile) {
+        fwrite($openfile, $useragent . PHP_EOL);
+        fclose($openfile);
+    } else {
+        error_log("Could not open file for writing: $uafile");
+    }
 }
 
 
