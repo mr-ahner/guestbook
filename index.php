@@ -191,6 +191,11 @@ $msgshow = array_slice($messages, $start, $mppage);
                     }
                 }
                 echo "</div>";
+                $htter = "hits.txt";
+                $hots = file_exists($htter) ? (int)file_get_contents($httr) : 0;
+                $hots++;
+                file_put_content($httr, $hots);
+                echo "guestbook has been viewed $hots times.";
                 ?>
             </div>
         </center>
