@@ -1,4 +1,13 @@
 <?php
+// this part blocks mobile users, you can keep it, I use it.
+// function mobile() {
+//     return preg_match('/Mobile|Android|iPhone|iPad/', $_SERVER['HTTP_USER_AGENT']);
+// }  
+
+// if (mobile()) {
+//   die("I don't line mobile users >:(");
+// }
+
 // for banned users, add ip it /rt/bannedusers.txt.
 $bannedip = $_SERVER['REMOTE_ADDR'];
 $banned = file(__DIR__  . '/rt/bannedusers.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
