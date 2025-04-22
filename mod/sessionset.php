@@ -1,7 +1,7 @@
 <?php
 session_start();
-require ("helpme.php");
 function setMod($pass) {
+  require ("helpme.php");
   $cpassword = $fuckyou; // in helpme.php define this variable for password 
   if ($pass === $cpassword) {
     $_SESSION['mod'] = true;
