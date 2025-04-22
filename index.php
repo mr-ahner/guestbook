@@ -110,6 +110,19 @@ $msgshow = array_slice($messages, $start, $mppage);
                 // if $_POST then it does so
                 function sendMessage() {
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                        $file = "messages.txt";
+                        // this banned word list is for lulz, you can delete this if you want idc
+                        $words = ['idiot', 'dumbhead', 'dumbass'];
+                        $replacement  = "fucking idiot dumbass";
+                        if(file_exists($file)) {
+                          $contents = file_get_contents($file);
+                          foreach($words as $word) {
+                          $content = preg_replace('/\b' . preg_quote($word, '/') . . '\b/i', $replacement, $contents);
+                          }
+                          file_put_contents($file, $contents);
+                        } else {
+                          echo "file not foudn:(";
+                        }
                         $username = ($_POST['username']);
                         $message = ($_POST['message']);
                         $ip = $_SERVER['REMOTE_ADDR']; //mainly for the bots, and for future ip-banning, but you can get rid of this, just // it out.
