@@ -163,7 +163,7 @@ $msgshow = array_slice($messages, $start, $mppage);
                         fwrite($messagesFile, $txt);
                         file_put_contents($rf, time());
                         fclose($messagesFile);
-                        header("Location: guestbook.php");
+                        header("Location: index.php");
                 
                     }
                 }
