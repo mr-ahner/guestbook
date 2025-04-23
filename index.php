@@ -49,10 +49,10 @@ function storeuseragent() {
     }
 }
 
-
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
+// error reporting is not good really for production, but if you are getting 500s, uncomment this.
+//ini_set('display_errors', '1');
+//ini_set('display_startup_errors', '1');
+//error_reporting(E_ALL);
 //pagination newest.
 $messages = array_reverse(file('messages.txt')); //latest first
 $mppage = 10;
