@@ -5,7 +5,7 @@
 // }  
 
 // if (mobile()) {
-//   die("I don't line mobile users >:(");
+//   die("I don't like mobile users >:(");
 // }
 
 // for banned users, add ip it /rt/bannedusers.txt.
