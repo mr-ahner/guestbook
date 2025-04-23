@@ -31,11 +31,6 @@ if (in_array($bannedip, $banned)) {
 </html>');
     
 }
-// function opsec is for something else, but I'm putting this in here for future me. 
-function opsec() {
-    $opsecip = $_SERVER['SERVER_ADDR'];
-    echo "$opsecip";
-}
 // to stop bots don't mind the referer I am working on that.
 $useragent = $_SERVER['HTTP_USER_AGENT'];
 //$referer =$_SERVER['HTTP_REFERER'];
