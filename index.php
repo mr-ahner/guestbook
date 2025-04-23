@@ -93,7 +93,6 @@ $msgshow = array_slice($messages, $start, $mppage);
             cursor: -webkit-default cursor: default;
             }
             .messages {
-            border: 1px dotted red;
             width: fit-content;
             color: red;
             cursor: -webkit-default cursor: default;
