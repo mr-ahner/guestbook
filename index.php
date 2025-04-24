@@ -102,7 +102,7 @@ $msgshow = array_slice($messages, $start, $mppage);
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
-    <title></title>
+    <title>nazbook</title> <!-- change this title -->
     <meta name="robots" content="index, follow">
           <style>
             body {
