@@ -15,5 +15,5 @@ tim : https://tim-ahner.com
 ver-dev :
 
 # Live example
-https://tim-ahner.com/guestbook.php (This version is my own, so there is my own css and what not, below is v.5 in action)   
-https://tim-ahner.com/php/nazbook-5/
+https://tim-ahner.com/guestbook.php (This version is my own, so there is my own css and what not, below is *v.5.5 in action)   
+https://tim-ahner.com/php/nazbook-5.5/ (this has about 150 test messages to test pagination) *running 5.5*
