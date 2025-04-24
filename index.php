@@ -123,6 +123,10 @@ $msgshow = array_slice($messages, $start, $mppage);
             color: red;
             cursor: -webkit-default cursor: default;
             }
+            h3 {
+            background-color: red;
+            color: black;
+            }
     </style>
     <link rel="canonical" href="">
 
