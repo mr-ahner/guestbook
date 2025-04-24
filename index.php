@@ -135,9 +135,6 @@ $msgshow = array_slice($messages, $start, $mppage);
             <div class="container">
                 <?php
                 // guestbook!
-                ini_set('display_errors', '1');
-                ini_set('display_startup_errors', '1');
-                error_reporting(E_ALL);
                 //function sendMessage does as it says 
                 // if $_POST then it does so
                 function sendMessage() {
