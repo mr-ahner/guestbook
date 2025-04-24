@@ -31,6 +31,33 @@ if (in_array($bannedip, $banned)) {
 </html>');
     
 }
+
+
+function ipInRange($ip, $cidr) {
+list($subnet, $mask) = explose('/', $cidr);
+return (ip2long($ip) & ~((1 << (32 - $mask)) - 1)) == (ip2long($subnet) & ~((1 << (32 - $mask)) - 1));
+}
+/
+/* 
+THIS IS FOR BLOCKING IP RANGES. YOU NEED A .ZONE FILE FOR THE COUNTRY. https://www.ipdeny.com/ipblocks/ IS WHERE I GOT MY .ZONE FILES
+ON MY WEBSITE, I CURRENTLY BLOCK NO COUNTRY, BUT THAT MIGHT CHANGE.
+function countryip($ip) { 
+// .zone is for the ip ranges
+$isrealcidrs = file(__DIR__ . '.zone', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+foreach ($isrealcidrs as $cidr) {
+if (ipInRange($ip, $cidr)) {
+  return true;
+}
+}
+return false; 
+}
+
+$ip = $_SEVER['REMOTE_ADDR'];
+if (countryip($ip)) {
+  http_response_code(403);
+  exit ("Denied. I dislike where you live. :3 <br> <img src='https://files.catbox.moe/egvrmh.png'>");
+}
+*/
 // to stop bots don't mind the referer I am working on that.
 $useragent = $_SERVER['HTTP_USER_AGENT'];
 //$referer =$_SERVER['HTTP_REFERER'];
