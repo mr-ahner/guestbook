@@ -81,7 +81,7 @@ function storeuseragent() {
 //error_reporting(E_ALL);
 //pagination newest.
 $messages = array_reverse(file('messages.txt')); //latest first
-$mppage = 10;
+$mppage = 6; //this is six, you can chagne this
 $total_m = count($messages);
 $total_p = ceil($total_m / $mppage);
 
@@ -192,8 +192,10 @@ $msgshow = array_slice($messages, $start, $mppage);
                 }
                 sendMessage();
                 ?>
-                <h2>&#x1F449;&#x1F448;</h2>
-                <form method="POST" action="">    
+                    <div class="banner">
+                    <img src="https://files.catbox.moe/5gg2a8.png">
+                    </div>                  
+                    <form method="POST" action="">    
                     <input type="text" name="username" placeholder="Username">
                     <br />
                     <textarea type="text" name="message" placeholder="Message"></textarea>
