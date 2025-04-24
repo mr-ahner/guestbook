@@ -226,10 +226,16 @@ $msgshow = array_slice($messages, $start, $mppage);
                 }
                 echo "</div>";
                 $htter = "hits.txt";
+                $ipss = "ips.txt";
+                $ip = $_SERVER['REMOTE_ADDR'];
                 $hots = file_exists($htter) ? (int)file_get_contents($htter) : 0;
+                $ips = file_exists($ipss) ? file($ipss, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) : [];
+                if (!in_array($ip, $ips)) {
                 $hots++;
                 file_put_contents($htter, $hots);
-                echo "guestbook has been viewed $hots times.";
+                file_put_contents($ipss, $ip . PHP_EOL, FILE_APPEND);
+                }
+                echo "guestbook has been viewed $hots times by unique users.";
                 ?>
             </div>
         </center>
