@@ -193,7 +193,9 @@ $msgshow = array_slice($messages, $start, $mppage);
                 sendMessage();
                 ?>
                     <div class="banner">
+                    <a href="https://github.com/mr-ahner/nazbook/">
                     <img src="https://files.catbox.moe/5gg2a8.png">
+                    </a>
                     </div>                  
                     <form method="POST" action="">    
                     <input type="text" name="username" placeholder="Username">
