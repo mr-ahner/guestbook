@@ -213,9 +213,9 @@ $msgshow = array_slice($messages, $start, $mppage);
                 echo "<br>";
                 for ($i = 1; $i <= $total_p; $i++) {
                     if ($i === $page) {
-                        echo "<strong>$i</strong>";
+                        echo "<strong>$i - </strong>";
                     } else {
-                        echo "<a href='?page=$i'>$i</a>";
+                        echo "<a href='?page=$i'>$i - </a>";
                     }
                 }
                 echo "</div>";
