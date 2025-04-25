@@ -126,6 +126,7 @@ $msgshow = array_slice($messages, $start, $mppage);
             h3 {
             background-color: red;
             color: black;
+            width: 190px;
             }
     </style>
     <link rel="canonical" href="">
