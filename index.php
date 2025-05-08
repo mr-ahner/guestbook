@@ -74,11 +74,6 @@ function storeuseragent() {
         error_log("Could not open file for writing: $uafile");
     }
 }
-
-// error reporting is not good really for production, but if you are getting 500s, uncomment this.
-//ini_set('display_errors', '1');
-//ini_set('display_startup_errors', '1');
-//error_reporting(E_ALL);
 //pagination newest.
 $messages = array_reverse(file('messages.txt')); //latest first
 $mppage = 6; //this is six, you can chagne this
